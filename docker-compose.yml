@@ -1,12 +1,14 @@
 version: '3.7'
+
 services:
-  kalilinux:
+  kalilinux: 
     hostname: kalilinux.lab
+    container_name: kali
     build:
       context: ./
       dockerfile: Dockerfile
     image: 'csalab/kalilinux-docker:${VERSION:-latest}'
-    restart: always
+    restart: unless-stopped
     cap_add:
       - NET_ADMIN
     ports:
